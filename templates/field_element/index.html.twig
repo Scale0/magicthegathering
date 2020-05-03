@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FieldElement index{% endblock %}
+
+{% block body %}
+    <h1>FieldElement index</h1>
+    <table class="table" CELLSPACING=0 CELLPADDING=0>
+        <tbody>
+        {% for xkey,x in field_elements %}
+            <tr>
+                {% for ykey,y in x %}
+                    <td>
+                        <a style="text-decoration: none;" href="{{ path(y.path, {'id': y.id ?? null}) }}?x={{ xkey }}&y={{ ykey }}">
+                            {{ y.symbol is defined and y.symbol != ' ' ? y.symbol : empty_tile }}
+                        </a>
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

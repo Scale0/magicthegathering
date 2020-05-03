@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Field{% endblock %}
+
+{% block body %}
+    <table class="table" CELLSPACING=0 CELLPADDING=0>
+        <tbody>
+        {% for xkey,x in data %}
+            <tr>
+                {% for ykey,y in x %}
+                    <td>
+                        {{ y }}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

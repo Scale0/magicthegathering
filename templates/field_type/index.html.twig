@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FieldType index{% endblock %}
+
+{% block body %}
+    <h1>FieldType index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Symbol</th>
+                <th>Blocking</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for field_type in field_types %}
+            <tr>
+                <td>{{ field_type.name }}</td>
+                <td>{{ field_type.symbol }}</td>
+                <td>{{ field_type.blocking ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('field_type_show', {'id': field_type.id}) }}">show</a>
+                    <a href="{{ path('field_type_edit', {'id': field_type.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('field_type_new') }}">Create new</a>
+{% endblock %}
